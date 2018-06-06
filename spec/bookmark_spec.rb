@@ -54,9 +54,10 @@ describe Bookmark do
       expect(results).to eq expected_bookmarks
     end
 
-    # it 'checks if the user inputs a valid url' do
-    #   expect(Bookmark.create('fail')).to eq false
-    # end
+    it 'does not create a new bookmark if the url is not valid' do
+      Bookmark.create('should not pass')
+      expect(Bookmark.all).not_to include 'should not pass'
+    end
 
 
   end

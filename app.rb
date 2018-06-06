@@ -15,11 +15,12 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/bookmarks' do
-    if params['bookmark'] =~ /\A#{URI::regexp(['http', 'https'])}\z/
-      Bookmark.create(params['bookmark'])
-    else
-      flash[:notice] = "you must submit a valid url"
-    end
+    # Bookmark.create(params['bookmark'])
+    # we need the flash notice
+    valid_url = Bookmark.create(params['bookmark'])
+
+    flash[:notice] = "you must submit a valid url" unless valid_url
+
     redirect('/bookmarks')
   end
 
