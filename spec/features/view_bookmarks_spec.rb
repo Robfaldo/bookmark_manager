@@ -13,8 +13,3 @@ feature 'Viewing bookmarks' do
     expect(page).to have_content "http://google.com"
   end
 end
-
-# I could say it has div#view_saved_bookmarks
-# I could say it has particular content inside of it
-    # Could be the title 'Saved Bookmarks'
-    # Could be an example of an actual bookmark
