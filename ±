@@ -1,0 +1,16 @@
+added the create method to the bookmark class. Step 9
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Wed Jun 6 14:40:09 2018 +0100
+#
+# On branch master
+# Your branch is up to date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   .rspec
+#	modified:   lib/bookmark.rb
+#	modified:   spec/bookmark_spec.rb
+#	modified:   views/index.erb
+#

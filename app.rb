@@ -10,7 +10,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/bookmarks' do
-    $bookmark_to_add = params['bookmark']
+    Bookmark.create(params['bookmark'])
     redirect('/bookmarks')
   end
 
