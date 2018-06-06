@@ -50,7 +50,7 @@ describe Bookmark do
         "http://google.com",
         "http://facebook.com"
       ]
-      
+
       expect(results).to eq expected_bookmarks
     end
   end
