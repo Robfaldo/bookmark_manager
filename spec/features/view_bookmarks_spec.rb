@@ -12,4 +12,8 @@ feature 'Viewing bookmarks' do
     expect(page).to have_content "http://destroyallsoftware.com"
     expect(page).to have_content "http://google.com"
   end
+
+  xscenario 'user can click the title to go to the url' do
+
+  end
 end

@@ -19,6 +19,11 @@ describe Bookmark do
       expect(Bookmark.all).to eq expected_bookmarks
 
     end
+
+    # it 'returns an instance of the Book class with ID and title' do
+    #   Bookmark.create('http://google.com', 'This is a tag')
+    #
+    # end
   end
 
   describe '.create' do

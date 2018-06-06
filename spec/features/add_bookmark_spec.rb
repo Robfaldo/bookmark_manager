@@ -21,6 +21,15 @@ feature 'Adding bookmarks' do
     expect(page).not_to have_content "addbookmark"
   end
 
+  scenario 'user can give a tag to a bookmark' do
+    visit('/bookmarks')
+    fill_in('bookmark', with: 'http://google.com')
+    fill_in('title', with: 'This is the title')
+    click_button('submit')
+    expect(page).to have_content "This is the title"
+    expect(page).not_to have_content "http://google.com"
+  end
+
   def visit_bookmarks_and_submit_valid_website
     visit('/bookmarks')
     fill_in('bookmark', with: 'http://google.com')
