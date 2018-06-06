@@ -4,6 +4,7 @@ source "https://rubygems.org"
 
 gem 'rspec'
 gem 'sinatra'
+gem 'sinatra-flash'
 gem 'capybara'
 gem 'pg'
 
