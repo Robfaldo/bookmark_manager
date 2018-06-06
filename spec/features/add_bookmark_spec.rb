@@ -25,4 +25,13 @@ feature 'Adding bookmarks' do
     expect(page).to have_content "http://secondeample.com"
   end
 
+  scenario 'user enters invalid url' do
+    visit('/bookmarks')
+    # Exercise
+    fill_in('bookmark', with: 'addbookmark')
+    click_button('submit')
+    expect(page).to have_content 'you must submit a valid url'
+    expect(page).not_to have_content "addbookmark"
+  end
+
 end

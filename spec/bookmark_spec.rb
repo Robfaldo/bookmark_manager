@@ -53,5 +53,11 @@ describe Bookmark do
 
       expect(results).to eq expected_bookmarks
     end
+
+    # it 'checks if the user inputs a valid url' do
+    #   expect(Bookmark.create('fail')).to eq false
+    # end
+
+
   end
 end
