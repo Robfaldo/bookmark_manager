@@ -6,64 +6,52 @@ describe Bookmark do
       connection = PG.connect(dbname: 'bookmark_manager_test')
 
       # Add the test data
-      connection.exec("INSERT INTO bookmarks (url) VALUES('http://makersacademy.com');")
-      connection.exec("INSERT INTO bookmarks (url) VALUES('http://destroyallsoftware.com');")
-      connection.exec("INSERT INTO bookmarks (url) VALUES('http://google.com');")
+      bookmark_1 = Bookmark.create(url: 'http://makersacademy.com')
+      bookmark_2 = Bookmark.create(url: 'http://destroyallsoftware.com')
+      bookmark_3 = Bookmark.create(url: 'http://google.com')
 
       expected_bookmarks =[
-        'http://makersacademy.com',
-        'http://destroyallsoftware.com',
-        'http://google.com'
+        bookmark_1,
+        bookmark_2,
+        bookmark_3
       ]
 
       expect(Bookmark.all).to eq expected_bookmarks
-
     end
-
-    # it 'returns an instance of the Book class with ID and title' do
-    #   Bookmark.create('http://google.com', 'This is a tag')
-    #
-    # end
   end
 
   describe '.create' do
-    it 'adds a bookmark to the database' do
-      connection = PG.connect(dbname: 'bookmark_manager_test')
-
-      Bookmark.create("http://testwebsite.com")
-
-      database_data = connection.exec("SELECT * FROM bookmarks")
-
-      results = database_data.map { |bookmark| bookmark['url'] }
-
-      expect(results).to eq ['http://testwebsite.com']
+    it 'creates a new bookmark' do
+      bookmark = Bookmark.create(url: "http://testwebsite.com")
+      expect(Bookmark.all).to include bookmark
     end
 
     it 'adds multiple bookmark to the database' do
-      connection = PG.connect(dbname: 'bookmark_manager_test')
-
-      Bookmark.create("http://testwebsite.com")
-      Bookmark.create("http://google.com")
-      Bookmark.create("http://facebook.com")
-
-      database_data = connection.exec("SELECT * FROM bookmarks")
-
-      results = database_data.map { |bookmark| bookmark['url'] }
+      bookmark_1 = Bookmark.create(url: "http://testwebsite.com")
+      bookmark_2 = Bookmark.create(url: "http://google.com")
+      bookmark_3 = Bookmark.create(url: "http://facebook.com")
 
       expected_bookmarks = [
-        "http://testwebsite.com",
-        "http://google.com",
-        "http://facebook.com"
+        bookmark_1,
+        bookmark_2,
+        bookmark_3
       ]
 
-      expect(results).to eq expected_bookmarks
+      expect(Bookmark.all).to eq expected_bookmarks
     end
 
     it 'does not create a new bookmark if the url is not valid' do
-      Bookmark.create('should not pass')
+      Bookmark.create(url: 'should not pass')
       expect(Bookmark.all).not_to include 'should not pass'
     end
+  end
 
+  describe '#==' do
+    it 'two bookmarks are equal if their ids match' do
+      bookmark_1 = Bookmark.new(1, 'http://google.com')
+      bookmark_2 = Bookmark.new(1, 'http://google.com')
 
+      expect(bookmark_1).to eq(bookmark_2)
+    end
   end
 end

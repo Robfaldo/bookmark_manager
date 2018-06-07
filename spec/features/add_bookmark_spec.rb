@@ -5,6 +5,7 @@
 feature 'Adding bookmarks' do
   scenario 'a user can add bookmarks' do
     visit_bookmarks_and_submit_valid_website
+    save_and_open_page
     expect(page).to have_content "http://google.com"
   end
   scenario 'a user can add multiple bookmarks' do
@@ -21,7 +22,7 @@ feature 'Adding bookmarks' do
     expect(page).not_to have_content "addbookmark"
   end
 
-  scenario 'user can give a tag to a bookmark' do
+  xscenario 'user can give a tag to a bookmark' do
     visit('/bookmarks')
     fill_in('bookmark', with: 'http://google.com')
     fill_in('title', with: 'This is the title')

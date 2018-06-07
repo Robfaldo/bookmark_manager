@@ -15,7 +15,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/bookmarks' do
-    valid_url = Bookmark.create(params['bookmark'])
+    valid_url = Bookmark.create(url: params['bookmark'])
     flash[:notice] = "you must submit a valid url" unless valid_url
 
     redirect('/bookmarks')
