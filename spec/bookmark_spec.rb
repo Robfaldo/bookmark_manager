@@ -6,9 +6,9 @@ describe Bookmark do
       connection = PG.connect(dbname: 'bookmark_manager_test')
 
       # Add the test data
-      bookmark_1 = Bookmark.create(url: 'http://makersacademy.com')
-      bookmark_2 = Bookmark.create(url: 'http://destroyallsoftware.com')
-      bookmark_3 = Bookmark.create(url: 'http://google.com')
+      bookmark_1 = Bookmark.create(url: 'http://makersacademy.com', title: "Makers")
+      bookmark_2 = Bookmark.create(url: 'http://destroyallsoftware.com', title: "Destory all software")
+      bookmark_3 = Bookmark.create(url: 'http://google.com', title: "Google")
 
       expected_bookmarks =[
         bookmark_1,
@@ -48,8 +48,8 @@ describe Bookmark do
 
   describe '#==' do
     it 'two bookmarks are equal if their ids match' do
-      bookmark_1 = Bookmark.new(1, 'http://google.com')
-      bookmark_2 = Bookmark.new(1, 'http://google.com')
+      bookmark_1 = Bookmark.new(1, 'http://google.com', title: "Google")
+      bookmark_2 = Bookmark.new(1, 'http://google.com', title: "Google")
 
       expect(bookmark_1).to eq(bookmark_2)
     end

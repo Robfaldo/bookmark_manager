@@ -6,8 +6,15 @@ feature 'Adding bookmarks' do
   scenario 'a user can add bookmarks' do
     visit_bookmarks_and_submit_valid_website
     save_and_open_page
-    expect(page).to have_content "http://google.com"
+    expect(page).to have_content("Google")
   end
+
+  scenario 'a user can click on the title and go to url' do
+    visit_bookmarks_and_submit_valid_website
+    click_link('title')
+    expect(find_link('title').visible?).to eq true
+  end
+
   scenario 'a user can add multiple bookmarks' do
     visit_bookmarks_and_submit_valid_website
     fill_in('bookmark', with: 'http://secondeample.com')
@@ -34,6 +41,7 @@ feature 'Adding bookmarks' do
   def visit_bookmarks_and_submit_valid_website
     visit('/bookmarks')
     fill_in('bookmark', with: 'http://google.com')
+    fill_in('title', with: 'Google')
     click_button('submit')
   end
 

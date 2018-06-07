@@ -1,16 +1,15 @@
 <ul>
-  <% @bookmarks.each do |bookmark| %>
+  
   <div class ='row'>
     <div class = 'col-lg-1'>
-      <a id="title" href=<%= bookmark.url %>><%= bookmark.title %></a>
+      <a id="title" href=http://google.com, Google></a>
     </div>
     div
   </div>
-  <% end %>
-  <%= @bookmark_to_add %>
+  
+  
 </ul>
 
-<%= styled_flash %>
 
 <form action="/bookmarks" method="post">
   Enter a bookmark<br>
