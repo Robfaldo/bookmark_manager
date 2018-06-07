@@ -36,6 +36,7 @@ class Bookmark
     end
     # we need to add title into the create database so that we get back an object with title aswell as id and url
     result = connection.exec("INSERT INTO bookmarks (url, title) VALUES('#{options[:url]}', '#{options[:title]}') RETURNING id, url, title;")
+  
     Bookmark.new(result.first['id'], result.first['url'], result.first['title'])
   end
 
