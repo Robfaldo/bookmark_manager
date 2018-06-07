@@ -5,7 +5,6 @@
 feature 'Adding bookmarks' do
   scenario 'a user can add bookmarks' do
     visit_bookmarks_and_submit_valid_website
-    save_and_open_page
     expect(page).to have_content("Google")
   end
 
