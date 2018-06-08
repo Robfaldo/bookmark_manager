@@ -7,6 +7,7 @@ class BookmarkManager < Sinatra::Base
 
   enable :sessions
   register Sinatra::Flash
+  use Rack::MethodOverride
 
   get '/bookmarks' do
     @bookmarks = Bookmark.all
@@ -20,7 +21,7 @@ class BookmarkManager < Sinatra::Base
     redirect('/bookmarks')
   end
 
-  post '/bookmarks/:id/delete' do
+  delete '/bookmarks/:id/delete' do
     Bookmark.delete(params[:id])
     redirect('/bookmarks')
   end

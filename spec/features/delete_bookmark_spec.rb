@@ -3,7 +3,6 @@ feature 'Deleting Bookmarks' do
     bookmark = Bookmark.create(url: "http://www.website.com", title: "Website")
     visit('/bookmarks')
     click_button "delete-#{bookmark.id}"
-    save_and_open_page
     expect(page).to have_content("Enter a bookmark")
     expect(page).not_to have_content('Website')
   end
