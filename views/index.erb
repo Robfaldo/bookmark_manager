@@ -4,7 +4,7 @@
     <div class = 'col-lg-1'>
       <a id="title" href=<%= bookmark.url %>><%= bookmark.title %></a>
         <form action="/bookmarks/<%= bookmark.id %>/delete" method="post">
-          <input type="hidden" name="_method" value="DELETE" > 
+          <input type="hidden" name="_method" value="DELETE" >
           <input type="hidden" name="id" value=<%= bookmark.id %>>
           <input type="submit" id='delete-<%= bookmark.id %>' value="delete">
         </form>
@@ -18,8 +18,8 @@
 
 <form action="/bookmarks" method="post">
   Enter a bookmark<br>
-  <input type="text" name="bookmark">
+  <input type="text" name="bookmark"><br>
   Enter the title<br>
-  <input type="text" name="title">
+  <input type="text" name="title"><br>
   <input type="submit" value="submit">
 </form>

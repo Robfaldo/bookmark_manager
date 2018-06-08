@@ -6,12 +6,4 @@ feature 'Deleting Bookmarks' do
     expect(page).to have_content("Enter a bookmark")
     expect(page).not_to have_content('Website')
   end
-
-
-  def visit_bookmarks_and_submit_valid_website_google
-    visit('/bookmarks')
-    fill_in('bookmark', with: 'http://google.com')
-    fill_in('title', with: 'Google')
-    click_button('submit')
-  end
 end
