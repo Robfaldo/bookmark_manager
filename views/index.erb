@@ -3,7 +3,7 @@
   <div class ='row'>
     <div class = 'col-lg-1'>
       <a id="title" href=<%= bookmark.url %>><%= bookmark.title %></a>
-        <form action="/bookmarks" method="post">
+        <form action="/bookmarks/<%= bookmark.id %>/delete" method="post">
           <input type="hidden" name="id" value=<%= bookmark.id %>>
           <input type="submit" id='delete-<%= bookmark.id %>' value="delete">
         </form>
