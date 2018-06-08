@@ -1,4 +1,5 @@
 require_relative './setup_test_database'
+require 'web_helper'
 
 # add this to spec/spec_helper.rb
 ENV['RACK_ENV'] = 'test'

@@ -12,8 +12,4 @@ feature 'Viewing bookmarks' do
     expect(page).to have_content "Destory"
     expect(page).to have_content "Google"
   end
-
-  xscenario 'user can click the title to go to the url' do
-
-  end
 end
