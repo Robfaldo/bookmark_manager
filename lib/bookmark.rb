@@ -40,11 +40,14 @@ class Bookmark
     Bookmark.new(result.first['id'], result.first['url'], result.first['title'])
   end
 
-  # def self.delete(bookmark_id)
-  #
-  #   #
-  #
-  # end
+  def self.delete(bookmark_id)
+    if ENV['ENVIRONMENT'] == 'test'
+      connection = PG.connect(dbname: 'bookmark_manager_test')
+    else
+      connection = PG.connect(dbname: 'bookmark_manager')
+    end
+    connection.exec("DELETE FROM bookmarks WHERE id = #{bookmark_id};")
+  end
 
   private
   def self.valid_url?(url)
